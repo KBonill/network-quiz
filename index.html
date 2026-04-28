@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Start Screen -->
+        <div id="startScreen" class="screen active">
+            <div class="start-content">
+                <h1>Practice Quiz</h1>
+                <p class="subtitle">Test your knowledge with our comprehensive quiz</p>
+                <div class="quiz-info">
+                    <div class="info-card">
+                        <span class="info-icon">📚</span>
+                        <p><strong id="totalQuestionsInfo">0</strong> Questions</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-icon">⏱️</span>
+                        <p><strong>No Time Limit</strong></p>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-icon">✅</span>
+                        <p><strong>Instant Feedback</strong></p>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="startQuiz()">Start Quiz</button>
+                <p class="footer-text">Created with Interactive Quiz Template</p>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quizScreen" class="screen">
+            <div class="quiz-header">
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressBar"></div>
+                    </div>
+                    <p class="progress-text"><span id="currentQuestion">1</span> / <span id="totalQuestions">0</span></p>
+                </div>
+                <button class="btn-close" onclick="exitQuiz()">✕</button>
+            </div>
+
+            <div class="quiz-content">
+                <h2 id="questionText" class="question-text"></h2>
+                
+                <div id="answersContainer" class="answers-container"></div>
+
+                <div class="quiz-navigation">
+                    <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()" disabled>← Previous</button>
+                    <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">Next →</button>
+                </div>
+
+                <div class="answer-status" id="answerStatus"></div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="resultsScreen" class="screen">
+            <div class="results-content">
+                <h1>Quiz Complete!</h1>
+                
+                <div class="score-display">
+                    <div class="score-circle">
+                        <span id="finalScore">0</span><span class="score-total">/<span id="totalQuestionsScore">0</span></span>
+                    </div>
+                </div>
+
+                <div class="results-info">
+                    <p class="score-percentage" id="scorePercentage">0%</p>
+                    <p class="score-message" id="scoreMessage"></p>
+                </div>
+
+                <div class="results-breakdown">
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">Correct Answers</span>
+                        <span class="breakdown-value" id="correctCount">0</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">Incorrect Answers</span>
+                        <span class="breakdown-value" id="incorrectCount">0</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">Accuracy</span>
+                        <span class="breakdown-value" id="accuracy">0%</span>
+                    </div>
+                </div>
+
+                <div class="results-actions">
+                    <button class="btn btn-primary" onclick="reviewAnswers()">Review Answers</button>
+                    <button class="btn btn-secondary" onclick="restartQuiz()">Try Again</button>
+                    <button class="btn btn-secondary" onclick="backToHome()">Back to Home</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Review Screen -->
+        <div id="reviewScreen" class="screen">
+            <div class="review-header">
+                <h2>Answer Review</h2>
+                <button class="btn-close" onclick="backToResults()">✕</button>
+            </div>
+
+            <div id="reviewContainer" class="review-container"></div>
+
+            <div class="review-navigation">
+                <button class="btn btn-primary" onclick="backToResults()">Back to Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
